@@ -1,9 +1,19 @@
-import React from 'react'
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { login, logout } from "./loginSlice";
 
 function Login() {
+  const user = useSelector((state) => state.login.value);
+  const dispatch = useDispatch();
   return (
-    <div>Login</div>
-  )
+    <div>
+      {user ? (
+        <button onClick={() => dispatch(logout())}>Log Out</button>
+      ) : (
+        <button onClick={() => dispatch(login())}>Log In</button>
+      )}
+    </div>
+  );
 }
 
-export default Login
+export default Login;
