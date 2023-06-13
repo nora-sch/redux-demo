@@ -7,11 +7,7 @@ function Login() {
   const dispatch = useDispatch();
   return (
     <div>
-      {user ? (
-        <button onClick={() => dispatch(logout())}>Log Out</button>
-      ) : (
-        <button onClick={() => dispatch(login())}>Log In</button>
-      )}
+      {!user && <button onClick={() => dispatch(login())}>Log In</button>}
     </div>
   );
 }

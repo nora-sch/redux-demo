@@ -14,9 +14,14 @@ import {
   DropdownItem,
   NavbarText,
 } from "reactstrap";
-import { FaUserCircle } from 'react-icons/fa';
+import { FaUserCircle } from "react-icons/fa";
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../features/login/loginSlice";
 
 function NavigationBar(args) {
+  const user = useSelector((state) => state.login.value);
+  const dispatch = useDispatch();
+
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
@@ -42,23 +47,29 @@ function NavigationBar(args) {
               <DropdownToggle nav caret>
                 Options
               </DropdownToggle>
-              <DropdownMenu right>
+              <DropdownMenu end>
                 <DropdownItem>Option 1</DropdownItem>
                 <DropdownItem>Option 2</DropdownItem>
                 <DropdownItem divider />
                 <DropdownItem>Reset</DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
-            {/* <NavItem>
-              <NavLink tag={RRNavLink} to="/login">
-                Login
-              </NavLink>
-            </NavItem> */}
           </Nav>
-          <FaUserCircle style={{marginRight:'10px'}}/>
-          <NavLink tag={RRNavLink} to="/login">
-            Login
-          </NavLink>
+          {user ? (
+            <FaUserCircle style={{ marginRight: "10px", color: "green" }} />
+          ) : (
+            <FaUserCircle style={{ marginRight: "10px" }} />
+          )}
+          {user ? (
+            <div>
+            {user}
+            <button onClick={() => dispatch(logout())} style={{marginLeft:'10px'}}>Log Out</button>
+            </div>
+          ) : (
+            <NavLink tag={RRNavLink} to="/login">
+              Login
+            </NavLink>
+          )}
         </Collapse>
       </Navbar>
     </div>
