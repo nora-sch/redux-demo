@@ -7,7 +7,12 @@ function Login() {
   const dispatch = useDispatch();
   return (
     <div>
-      {!user && <button onClick={() => dispatch(login())}>Log In</button>}
+      {!user && (
+        <div style={{display:'flex', flexDirection:'column' , width:'30%', justifyContent:'center', margin:'0 auto'}}>
+          <input></input>
+          <button onClick={() => dispatch(login())} style={{width:'50%', margin:'10px', alignSelf:'center'}}>Log In</button>
+        </div>
+      )}
     </div>
   );
 }

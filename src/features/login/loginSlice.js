@@ -6,10 +6,14 @@ export const loginSlice = createSlice({
     },
     reducers: {
       login: (state) => {
-        state.value = 'Nora Sumane';
+        // state.value = 'Nora Sumane';
+        state.value = {
+            firstname: 'Nora',
+            lastname: 'Sumane',
+         }
       },
       logout: (state) => {
-        state.value = '';
+        state.value = null;
       },
     },
   });

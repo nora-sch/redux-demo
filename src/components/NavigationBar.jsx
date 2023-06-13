@@ -29,7 +29,7 @@ function NavigationBar(args) {
   return (
     <div>
       <Navbar expand={"xl"}>
-        <NavbarBrand href="/">reactstrap</NavbarBrand>
+        <NavbarBrand href="/">redux-demo</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="me-auto" navbar>
@@ -62,12 +62,12 @@ function NavigationBar(args) {
           )}
           {user ? (
             <div>
-            {user}
-            <button onClick={() => dispatch(logout())} style={{marginLeft:'10px'}}>Log Out</button>
+            {user.firstname}
+            <button onClick={() => dispatch(logout())} style={{marginLeft:'10px'}}>Sign Out</button>
             </div>
           ) : (
             <NavLink tag={RRNavLink} to="/login">
-              Login
+              Sign In
             </NavLink>
           )}
         </Collapse>
